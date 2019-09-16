@@ -8,5 +8,19 @@
 
 import Foundation
 
-print("Hello, World!")
+let matrixA = [
+    [2, -1, -2],
+    [-4, 6, 3],
+    [-4, -2, 8]
+]
+
+let matrixY = [[3], [4]]
+
+
+
+let lu = LUDecomposition(matrixA: matrixA, matrixY: matrixY)
+lu.decomposition()
+lu.printL()
+print("\n\n\n")
+lu.printU()
 
