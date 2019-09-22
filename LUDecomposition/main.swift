@@ -8,19 +8,7 @@
 
 import Foundation
 
-let matrixA = [
-    [1.0, 2.0, 3.0],
-    [3.0, 4.0, 1.0],
-    [2.0, 2.0, 2.0],
-]
-
-let matrixB = [6.0, 8.0, 6.0]
-var lu = LUDecomposition(matrixA: matrixA, matrixB: matrixB)
-lu.decomposition()
-lu.printLU()
-print(lu.findSolution())
-
-
+// MARK: - Random Generation Data For Matrix
 func randomMatrix(size: Int) -> [[Double]] {
    var array: [[Double]] = Array(repeating: Array(repeating: 0, count: size), count: size)
    for i in 0..<size {
@@ -44,17 +32,34 @@ func computingMatrixB(array: [[Double]]) -> [Double] {
 }
 
 
-let array = randomMatrix(size: 500)
-for i in 0..<array.count {
-    for j in 0..<array.count {
-        print("\(array[i][j]) \t", terminator: "")
-    }
-    print("\n")
-}
-let b = computingMatrixB(array: array)
-print(b)
+// MARK: - Main program
+func main() {
+    let matrixA = [
+        [1.0, 2.0, 3.0],
+        [3.0, 4.0, 1.0],
+        [2.0, 2.0, 2.0],
+    ]
 
-lu = LUDecomposition(matrixA: array, matrixB: b)
-lu.decomposition()
-lu.printLU()
-print(lu.findSolution())
+    let matrixB = [6.0, 8.0, 6.0]
+    var lu = LUDecomposition(matrixA: matrixA, matrixB: matrixB)
+    lu.decomposition()
+    lu.printLU()
+    print(lu.findSolution())
+    
+    let array = randomMatrix(size: 500)
+    for i in 0..<array.count {
+        for j in 0..<array.count {
+            print("\(array[i][j]) \t", terminator: "")
+        }
+        print("\n")
+    }
+    let b = computingMatrixB(array: array)
+    print(b)
+
+    lu = LUDecomposition(matrixA: array, matrixB: b)
+    lu.decomposition()
+    lu.printLU()
+    print(lu.findSolution())
+}
+
+main()
